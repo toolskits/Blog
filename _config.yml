@@ -1,51 +1,23 @@
-# Site Settings
 title: "Toolskits Cloud Security Blog"
-description: "Cloud security tutorials, tools, and tips for modern IT professionals."
-url: "https://toolskits.github.io"
+description: "Cloud security tips, tutorials, and tools."
 baseurl: "/blog"
-language: "en"
-timezone: "Asia/Kabul"
-markdown: kramdown
-permalink: /:categories/:title/
+url: "https://toolskits.github.io"
 
-# Author
-author:
-  name: "Toolskits"
-  email: "contact@toolskits.github.io"
-  twitter: "toolskits"
-
-# Build & Plugins
+# Use only supported plugins
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-sitemap
-  - jekyll-paginate
-  - jekyll-archives
-
 paginate: 5
 paginate_path: "/page:num/"
 
-# Collections & Defaults
-collections:
-  posts:
-    output: true
+# Markdown settings
+markdown: kramdown
+permalink: /:categories/:title/
+
+# Default layouts
 defaults:
   - scope:
       path: ""
       type: "posts"
     values:
       layout: post
-
-# Archives (category pages)
-jekyll-archives:
-  enabled: true
-  layouts:
-    category: archive
-  permalinks:
-    category: /categories/:name/
-
-# SEO
-seo:
-  title: "Toolskits Cloud Security Blog"
-  description: "Cloud security tutorials, tools, and tips."
-  twitter: "toolskits"
