@@ -1,21 +1,29 @@
 ---
 layout: default
-title: About
+title: Home
 ---
 
-<h1>About Toolskits Cloud Security Blog</h1>
+<h1>Welcome to Toolskits Cloud Security Blog</h1>
+<p>Explore tutorials, tools, and insights to secure cloud infrastructure.</p>
 
-<p>Welcome to <strong>Toolskits Blog</strong>! 🚀</p>
-
-<p>Here we share practical tips, tutorials, and tools for cloud security, DevOps, and IT professionals. Our goal is to provide actionable guidance that helps you secure your cloud infrastructure and stay ahead in cybersecurity.</p>
-
-<h2>What You’ll Find Here</h2>
+<h2>Latest Posts</h2>
 <ul>
-  <li>Step-by-step cloud security tutorials</li>
-  <li>Analysis of new cloud threats</li>
-  <li>Open-source tools and scripts</li>
-  <li>Best practices for AWS, Azure, GCP, and more</li>
+  {% for post in paginator.posts %}
+    <li>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <span class="date">{{ post.date | date: "%b %d, %Y" }}</span>
+    </li>
+  {% endfor %}
 </ul>
 
-<h2>Contact</h2>
-<p>If you want to reach out, email us at <a href="mailto:contact@toolskits.github.io">contact@toolskits.github.io</a> or connect via <a href="https://twitter.com/toolskits" target="_blank">Twitter</a>.</p>
+{% if paginator.total_pages > 1 %}
+  <div class="pagination">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Previous</a>
+    {% endif %}
+    <span>Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
+    {% endif %}
+  </div>
+{% endif %}
