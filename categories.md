@@ -1,13 +1,18 @@
 ---
-layout: page
+layout: default
 title: Categories
 ---
 
-<h1>Categories</h1>
+# Categories
+
 <ul>
-  {% for category in site.categories %}
+{% assign cats = site.posts | map: "categories" | uniq | sort %}
+{% for cat_list in cats %}
+  {% for cat in cat_list %}
     <li>
-      <a href="{{ '/categories/' | append: category[0] | relative_url }}">{{ category[0] }}</a> ({{ category[1].size }})
+      <a href="#{{ cat }}">{{ cat }}</a>
+      ({{ site.posts | where_exp:"p","p.categories contains cat" | size }})
     </li>
   {% endfor %}
+{% endfor %}
 </ul>
